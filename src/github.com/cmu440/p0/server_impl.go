@@ -53,16 +53,40 @@ func (mes *multiEchoServer) Start(port int) error {
 // "exit" from server, it stops all of its connections
 // immediately.
 func (mes *multiEchoServer) dispatch() {
-
+    for {
+        select {
+        case status := <- exitChannel:
+            if status{
+            }
+        }
+    default:
+        conn, err := mes.listenConn.Accept()
+        if err != nil{
+            fmt.Println("\tError on accept %vth connection: %v", 
+            mes.numConn + 1, err)
+        }else{
+            go handleConn(conn)
+            mes.numConn++
+        }
+    }
 }
+
+func (mes *multiEchoServer) handleConn(conn net
 
 func (mes *multiEchoServer) Close() {
 	// TODO: implement this!
+    if isStarted {
+        mes.exitChannel <- true
+    }else if isClosed{
+        fmt.Println("\tThe server has been closed.")
+    }else{
+        fmt.Println("\tThe server is not started.")
+    }
 }
 
 func (mes *multiEchoServer) Count() int {
 	// TODO: implement this!
-	return -1
+    return mes.numConn;
 }
 
 // TODO: add additional methods/functions below!
