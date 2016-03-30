@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net"
 	"sync"
+    "io"
 )
 
 const (
@@ -17,11 +18,11 @@ type multiEchoServer struct {
 	// TODO: implement this!
 	isStarted   bool      //Signifies whether the server is started or not
 	isClosed    bool      // Signifies whether the server is closed or not
-	numConnChan chan int  // Used to count the number of active clients
+	numConnChan chan int  // Used to count the number of active servers
 	exitChannel chan bool // Used to end the dispatcher
 	listenConn  net.Listener
 	wg          sync.WaitGroup      // A global waiter
-	clientChans map[int]chan string // List of all client channels
+	serverChans map[int]chan string // List of all server channels
 }
 
 // New creates and returns (but does not start) a new MultiEchoServer.
@@ -32,7 +33,7 @@ func New() MultiEchoServer {
 		isClosed:    false,
 		numConnChan: make(chan int),
 		exitChannel: make(chan bool),
-		clientChans: make(map[int]chan string),
+		serverChans: make(map[int]chan string),
 	}
 }
 
@@ -89,30 +90,58 @@ func (mes *multiEchoServer) dispatch() {
 func (mes *multiEchoServer) handleConn(conn net.Conn) {
 	// After doing all works, remeber to "done" the waiter.
 	defer mes.wg.Done()
+    defer conn.Close()
 	defer mes.deCount()
+    defer delete(mes.serverChans, count)
 	mes.wg.Add(1)
+    serverRead := make(chan string)
+    clientExit := make(chan bool)
+    go readFromClient(conn, serverRead, clientExit)
 	count := <-mes.numConnChan
 	count++
 	mes.numConnChan <- count
-	mes.clientChans[count+1] = make(chan string, NumClientBuffer)
-	for {
+	mes.serverChans[count+1] = make(chan string, NumClientBuffer)
+	for !mes.serverExit{
 		select {
-		case message := <-mes.clientChans[count]:
-			conn.Write([]byte(message))
-		}
-	}
+		case message := <-mes.serverChans[count]:
+            if _, err := conn.Write([]byte(message)); err == io.EOF{
+                return
+            }
+        // For now, the server can only cache one message.
+        case message := <-serverRead:
+            select {
+                case <- clientExit:
+                    return
+                default:
+                    for _, channel := range mes.serverChans{
+                if len(channel) == cap(channel){
+                    <- channel
+                }
+                channel <- message
+            }
 
+           }
+       }
+	}
+    return 
+}
+
+func readFromClient(conn net.Conn, serverRead chan string, 
+    clientExit chan bool){
+    var buf [2048]byte
+    for{
+        if n, err := conn.Read(buf[:]); err == io.EOF{
+            clientExit <- true
+            serverRead <- "die"
+        }else{
+            serverRead <- string(buf[0,n])
+        }
+    }
 }
 
 func (mes *multiEchoServer) deCount() {
 	count := <-mes.numConnChan
 	count--
-	mes.numConnChan <- count
-}
-
-func (mes *multiEchoServer) incCount() {
-	count := <-mes.numConnChan
-	count++
 	mes.numConnChan <- count
 }
 
