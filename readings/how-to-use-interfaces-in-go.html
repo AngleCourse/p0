@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="http://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=4407ac63b04a974114891da19b333539"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
+	<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+	<!--
+		Designed by
+		
+			_|_|_|      _|_|    _|_|_|_|    _|_|    _|  _|_|  
+			_|    _|  _|_|_|_|    _|      _|_|_|_|  _|_|      
+			_|    _|  _|          _|      _|        _|        
+			_|_|_|      _|_|_|      _|_|    _|_|_|  _|        
+			_|                                                
+			_|                                                
+
+			            _|        _|                      _|  
+			_|      _|        _|_|_|    _|_|_|  _|_|_|        
+			_|      _|  _|  _|    _|  _|    _|  _|    _|  _|  
+			  _|  _|    _|  _|    _|  _|    _|  _|    _|  _|  
+			    _|      _|    _|_|_|    _|_|_|  _|    _|  _|
+		
+		Found at justplaintheme.tumblr.com.
+	-->
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>jordan orelli</title>
+<meta name="description" content="How to use interfaces in Go Before I started programming Go, I was doing most of my work with Python. As a Python programmer, I found that learning to use interfaces in Go was extremely difficult...." />
+	<!-- custom  -->
+	<meta name="text:Disqus shortname" content="" />
+	
+	<meta name="if:Show People I Follow" content="0">
+	<meta name="if:Show Timestamp" content="1">
+	<meta name="if:Show Date" content="1">
+	<meta name="if:Show Search" content="1">
+	
+	<meta name="font:Body" content="Georgia">
+	<meta name="color:Background" content="#FFFFFF"/>
+	<meta name="color:Text" content="#111111"/>
+	<meta name="color:Link Text Hover" content="#FFFFFF"/>
+	<meta name="color:Link Background Hover" content="#D00000"/>
+	
+	<meta name="if:Show post notes" content="1">
+	<meta name="if:Endless scrolling" content="0">
+	
+	<!-- custom -->
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 20px;
+			background: #FFFFFF;
+			font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+			font-size: 1em;
+			color: #111111;
+		}
+		
+		a {
+			color: #111111;
+			text-decoration: underline;
+		}
+		
+			a:hover {
+				color: #FFFFFF;
+				background: #D00000;
+			}
+			
+			a:active,
+			a:focus {
+				outline: 0;
+			}
+			
+			a img { border-width: 0px; }
+		
+		.clear {
+			clear: both;
+		}
+		
+		#container {
+		  width: 770px;
+		}
+		
+		#left {
+			float: left;
+			width: 200px;
+		}
+		
+		#left a.h2 {
+			text-transform: uppercase;
+			font-size: 2em;
+			line-height: 1em;
+			color: #111111;
+			text-decoration: none;
+		}
+		
+			#left a.h2:hover {
+				color: #111111;
+				background: none;
+				text-decoration: none;
+			}
+			
+		#left .space {
+			width: 100%;
+			height: 20px;
+		}
+		
+			#left .space.small {
+				width: 100%;
+				height: 10px;
+			}
+		
+		#right {
+			width: 500px;
+			float: right;
+		}
+		
+			#right .post {
+				margin: 0 0 50px 0;
+			}
+			
+			img {
+			  max-width: 100%;
+			}
+			
+			#right .post h3 {
+				font-weight: normal;
+				font-size: 1.5em;
+				margin: 0;
+			}
+		
+			#right .post a.h3 {
+				color: #111111;
+				text-decoration: none;
+				font-size: 1.5em;
+				margin: 0;
+			}
+			
+				#right .post a.h3:hover {
+					background: none;
+				}
+			
+			#right .post a.h3.link {
+				text-decoration: underline;
+			}
+			
+				#right .post a.h3.link:hover {
+					color: #FFFFFF;
+					background: #D00000;
+				}
+			
+			#right .post blockquote {
+				border-left: 2px solid #111111;
+				padding: 0 0 0 15px;
+				margin-left: 0px;
+			}
+			
+			/* this is for chat */
+			#right .post table {
+				margin: 10px 0 0 0;
+				border-collapse: collapse;
+			}
+			
+				#right .post table tr {
+					margin: 1px 0;
+				}
+				
+				#right .post table tr td {
+					padding: auto;
+					vertical-align: top;
+				}
+				
+				#right .post table tr td.name {
+					text-align: right;
+					padding: 1px 15px;
+				}
+				
+				#right .post table tr td.words {
+					width: 100%;
+					text-align: left;
+					padding: 1px;
+				}
+			/* that was for chat */
+			
+			ol.notes {
+          margin: 0 0 50px 0;
+          padding: 0 0 0 0;
+      }
+
+          ol.notes img {
+              display: none;
+          }
+			
+		#right #footer {
+			position: relative;
+			right: 0px;
+			text-align: right;
+		}
+		
+			#right #footer .credit {
+				color: #9C9C9C;
+				margin: 50px 0 0 0;
+			}
+			
+				#right #footer .credit a {color: #9C9C9C;}
+				#right #footer .credit a:hover {color: #111111; background: none; }
+
+				
+	a.install {
+        width: 96px;
+        height: 20px;
+        background: url(http://static.tumblr.com/thpaaos/dHHkt0jor/install_theme.png);
+        display: block;
+        position: absolute;
+        top: 26px;
+        right: 3px;
+    }
+	
+	
+	</style>
+	
+	
+	
+	<style>figure{margin:0}</style>
+<link rel="shortcut icon" href="http://38.media.tumblr.com/avatar_1dbefd5af732_128.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://jordanorelli.com/rss" />
+	<meta name="viewport" content="width=820" />
+<link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=jordanorelli%26postID=32665860244" />
+<link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=jordanorelli&postID=32665860244" />
+<link rel="alternate" type="application/json+oembed" href="https://www.tumblr.com/oembed/1.0?url=http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go" title="How to use interfaces in Go
+Before I started programming Go, I was doing most of my work with Python. As a Python programmer, I found that learning to use interfaces in Go was extremely difficult. That is, the basics were easy, and I knew how to use..."/>
+<script src="http://assets.tumblr.com/assets/scripts/tumblelog_post_message_queue.js?_v=8b0553f75283ecbeb78be24f096f4c2c"></script>
+
+<link rel="stylesheet" type="text/css" href="http://assets.tumblr.com/fonts/gibson/stylesheet.css?v=3">
+<meta name="keywords" content="golang" />
+
+<!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. --><!-- Read more: http://ogp.me/ --><meta property="fb:app_id" content="48119224995" /><meta property="og:site_name" content="" /><meta property="og:title" content="How to use interfaces in Go" /><meta property="og:url" content="http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go" /><meta property="og:description" content="Before I started programming Go, I was doing most of my work with Python. As a Python programmer, I found that learning to use interfaces in Go was extremely difficult. That is, the basics were easy,..." /><meta property="og:determiner" content="a" /><meta property="og:type" content="tumblr-feed:entry" /><meta property="og:image" content="http://assets.tumblr.com/images/og/text_200.png" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=jordanorelli&amp;postID=32665860244" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=jordanorelli&amp;postID=32665860244" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" /><!-- END TUMBLR FACEBOOK OPENGRAPH TAGS -->
+
+
+<!-- GOOGLE CAROUSEL --><script type="application/ld+json">{"@type":"SocialMediaPosting","url":"http:\/\/jordanorelli.com\/post\/32665860244\/how-to-use-interfaces-in-go","mainEntityOfPage":true,"datePublished":"2012-10-01T13:07:00-04:00","author":"jordanorelli","headline":"How to use interfaces in Go","articleBody":"Before I started programming Go, I was doing most of my work with Python. As a Python programmer, I found that learning to use interfaces in Go was extremely difficult. That is, the basics were easy, and I knew how to use the interfaces in the standard library, but it took some practice before I...","@context":"http:\/\/schema.org"}</script>
+<link rel="canonical" href="http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go" />
+
+</head>
+<body>
+<a href="http://www.tumblr.com/theme/106" class="install"></a>
+<div id="container">
+  <div id="left">
+  	brooklyn-based software developer, currently working at Dotabuff.  @jordanorelli on twitter.
+  	
+    &bull; <a href="/ask">Ask me anything</a><br/>
+    
+  	<div class="space"></div>
+  	<div class="space small"></div>
+  	<a href="/" class="h2">jordan orelli</a>
+  	<div class="space"></div>
+  	
+  	
+  	<div class="space"></div>
+  	<form action="/search" method="get">
+  		<input type="text" class="search-query" name="q" value="" /> <input type="submit" class="search-button" value="Search"/>
+  	</form>
+  	
+  </div>
+
+  <div id="right">
+  	
+  	<div class="post">
+  	
+  		<a href="http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go" class="h3">How to use interfaces in Go</a>
+  		<p>Before I started programming Go, I was doing most of my work with Python. As a Python programmer, I found that learning to use interfaces in Go was extremely difficult. That is, the basics were easy, and I knew how to use the interfaces in the standard library, but it took some practice before I knew how to design my own interfaces. &nbsp;In this post, I&rsquo;ll discuss Go&rsquo;s type system in an effort to explain how to use interfaces effectively.</p>
+<h3>Introduction to interfaces</h3>
+<p>So what <em>is</em> an interface? An interface is two things: it is a set of methods, but it is also a type. Let&rsquo;s focus on the method set aspect of interfaces first.</p>
+<p>Typically, we&rsquo;re introduced to interfaces with some contrived example. Let&rsquo;s go with the contrived example of writing some application where you&rsquo;re defining Animal datatypes, because that&rsquo;s a totally realistic situation that happens all the time. The <code>Animal</code> type will be an interface, and we&rsquo;ll define an <code>Animal</code> as being&nbsp;<em>anything that can speak</em>. This is a core concept in Go&rsquo;s type system; instead of designing our abstractions in terms of what kind of data our types can hold, we design our abstractions in terms of what actions our types can execute.</p>
+<p>We start by defining our <code>Animal</code> interface:</p>
+<pre>type Animal interface {
+    Speak() string
+}</pre>
+<p>pretty simple: we define an <code>Animal</code> as being any type that has a method named <code>Speak</code>. The <code>Speak</code> method takes no arguments and returns a string. Any type that defines this method is said to <em>satisfy&nbsp;</em>the <code>Animal</code> interface. There is no <code>implements</code> keyword in Go; whether or not a type satisfies an interface is determined automatically. Let&rsquo;s create a couple of types that satisfy this interface:</p>
+<pre>type Dog struct {
+}
+
+func (d Dog) Speak() string {
+    return "Woof!"
+}
+
+type Cat struct {
+}
+
+func (c Cat) Speak() string {
+    return "Meow!"
+}
+
+type Llama struct {
+}
+
+func (l Llama) Speak() string {
+    return "?????"
+}
+
+type JavaProgrammer struct {
+}
+
+func (j JavaProgrammer) Speak() string {
+    return "Design patterns!"
+}
+</pre>
+<p>We now have four different types of animals: A dog, a cat, a llama, and a Java programmer. In our <code>main()</code> function, we can create a slice of Animals, and put one of each type into that slice, and see what each animal says. Let&rsquo;s do that now:</p>
+<pre>func main() {
+    animals := []Animal{Dog{}, Cat{}, Llama{}, JavaProgrammer{}}
+    for _, animal := range animals {
+        fmt.Println(animal.Speak())
+    }
+}
+</pre>
+<p>You can view and run this example here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FyGTd4MtgD5&amp;t=NGQ4Yzc1MTBhNTdlZjMyYzJlM2M5ZWY0ZjZlM2M3ZWE4MzgyYjMyZixoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/yGTd4MtgD5" target="_blank">http://play.golang.org/p/yGTd4MtgD5</a></p>
+<p>Great, now you know how to use interfaces, and I don&rsquo;t need to talk about them any more, right? Well, no, not really. Let&rsquo;s look at a few things that aren&rsquo;t very obvious to the budding gopher.</p>
+<h3>The <code>interface{}</code> type</h3>
+<p>The <code>interface{}</code> type, <em>the empty interface</em>, is the source of much confusion. The <code>interface{}</code> type is the interface that has no methods. Since there is no <code>implements</code> keyword, all types implement at least zero methods, and satisfying an interface is done automatically, <em>all types satisfy the empty interface</em>. That means that if you write a function that takes an <code>interface{}</code> value as a parameter, you can supply that function with any value. So, this function:</p>
+<pre>func DoSomething(v interface{}) {
+   // ...
+}
+</pre>
+<p>will accept any parameter whatsoever.</p>
+<p>Here&rsquo;s where it gets confusing: inside of the <code>DoSomething</code> function, what is <code>v</code>&rsquo;s type? Beginner gophers are led to believe that &ldquo;<code>v</code> is of any type&rdquo;, but that is wrong. <code>v</code> is not of <em>any</em> type; it is of <code>interface{}</code> type. Wait, what? When passing a value into the <code>DoSomething</code> function, the Go runtime will perform a type conversion (if necessary), and convert the value to an <code>interface{}</code> value. All values have exactly one type at runtime, and <code>v</code>&rsquo;s one static type is <code>interface{}</code>.</p>
+<p>This should leave you wondering: ok, so if a conversion is taking place, what is&nbsp;<em>actually&nbsp;</em>being passed into a function that takes an&nbsp;<code>interface{}</code>&nbsp;value (or, what is actually stored in an&nbsp;<code>[]Animal</code>&nbsp;slice)? An interface value is constructed of two words of data; one word is used to point to a method table for the value&rsquo;s underlying type, and the other word is used to point to the actual data being held by that value. I don&rsquo;t want to bleat on about this endlessly. If you understand that an interface value is two words wide and it contains a pointer to the underlying data, that&rsquo;s typically enough to avoid common pitfalls. If you are curious to learn more about the implementation of interfaces, I think<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fresearch.swtch.com%2Finterfaces&amp;t=ODljOTk5YWE4NjMyYzFiOWYxNDIyOWE2ODI5NGYwNjZlZDBmMjgxNyxoZmZyTU04Sg%3D%3D" title="Russ Cox's description of interfaces" target="_blank">&nbsp;Russ Cox&rsquo;s description of interfaces</a>&nbsp;is very, very helpful.</p>
+<p>In our previous example, when we constructed a slice of <code>Animal</code> values, we did not have to say something onerous like <code>Animal(Dog{})</code> to put a value of type <code>Dog</code> into the slice of <code>Animal</code> values, because the conversion was handled for us automatically. Within the <code>animals</code> slice, each element is of <code>Animal</code> type, but our different values have different underlying types.</p>
+<p>So&hellip; why does this matter? Well, understanding how interfaces are represented in memory makes some potentially confusing things very obvious. For example, the question &ldquo;<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fgolang.org%2Fdoc%2Fgo_faq.html%23convert_slice_of_interface&amp;t=MGI2MjE1YWJlMmQ5ODI0YWM2N2MyNzFiMjJiZTZkYjVmOGI1NmU4ZixoZmZyTU04Sg%3D%3D" title="http://golang.org/doc/go_faq.html#convert_slice_of_interface" target="_blank">can I convert a []T to an []interface{}</a>&rdquo; is easy to answer once you understand how interfaces are represented in memory. Here&rsquo;s an example of some broken code that is representative of a common misunderstanding of the <code>interface{}</code> type:</p>
+<pre>package main
+
+import (
+    "fmt"
+)
+
+func PrintAll(vals []interface{}) {
+    for _, val := range vals {
+        fmt.Println(val)
+    }
+}
+
+func main() {
+    names := []string{"stanley", "david", "oscar"}
+    PrintAll(names)
+}
+</pre>
+<p>Run it here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2F4DuBoi2hJU&amp;t=OGMwOTE4OTU0Zjk1Mjg3MzdjYjY0ZWQ2N2ZmNTEyODJkYmEyYzllYSxoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/4DuBoi2hJU" target="_blank">http://play.golang.org/p/4DuBoi2hJU</a></p>
+<p>By running this, you can see that we encounter the following error: <code>cannot use names (type []string) as type []interface {} in function argument.</code> If we want to actually make that work, we would have to convert the <code>[]string</code> to an&nbsp;<code>[]interface{}</code>:</p>
+<pre>package main
+
+import (
+    "fmt"
+)
+
+func PrintAll(vals []interface{}) {
+    for _, val := range vals {
+        fmt.Println(val)
+    }
+}
+
+func main() {
+    names := []string{"stanley", "david", "oscar"}
+    vals := make([]interface{}, len(names))
+    for i, v := range names {
+        vals[i] = v
+    }
+    PrintAll(vals)
+}
+</pre>
+<p>Run it here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FDhg1YS6BJS&amp;t=NDA2ZmVjODgxOWVkNmI3YTFkNDhkNDQ3YzBmM2Y1ODgxODA4YTdmYyxoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/Dhg1YS6BJS" target="_blank">http://play.golang.org/p/Dhg1YS6BJS</a></p>
+<p>That&rsquo;s pretty ugly, but <em>c'est la vie</em>. Not everything is perfect. (in reality, this doesn&rsquo;t come up very often, because <code>[]interface{}</code> turns out to be less useful than you would initially expect)</p>
+<h3>Pointers and interfaces</h3>
+<p>Another subtlety of interfaces is that an interface definition does not prescribe whether an implementor should implement the interface using a pointer receiver or a value receiver. When you are given an interface value, there&rsquo;s no guarantee whether the underlying type is or isn&rsquo;t a pointer. In our previous example, we defined all of our methods on value receivers, and we put the associated values into the <code>Animal</code> slice. Let&rsquo;s change this and make the <code>Cat</code>&rsquo;s <code>Speak()</code> method take a pointer receiver:</p>
+<pre>func (c *Cat) Speak() string {
+    return "Meow!"
+}
+</pre>
+<p>If you change that one signature, and you try to run the same program exactly as-is (<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FTvR758rfre&amp;t=YTEzNzA0YzVlYzM4YTUwYzFhMTJmNTFkNGJiN2JmYTJhNmEzYzQ3MSxoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/TvR758rfre" target="_blank">http://play.golang.org/p/TvR758rfre</a>), you will see the following error:</p>
+<pre>prog.go:40: cannot use Cat literal (type Cat) as type Animal in array element:
+    Cat does not implement Animal (Speak method requires pointer receiver)</pre>
+<p>This error message is a bit confusing at first, to be honest. What it&rsquo;s saying is not that the interface <code>Animal</code> demands that you define your method as a pointer receiver, but that you have tried to convert a <code>Cat</code> struct into an <code>Animal</code> interface value, but only <code>*Cat</code> satisfies that interface. You can fix this bug by passing in a <code>*Cat</code> pointer to the <code>Animal</code> slice instead of a <code>Cat</code> value, by using <code>new(Cat)</code> instead of <code>Cat{}</code> (you could also say <code>&amp;Cat{}</code>, I simply prefer the look of <code>new(Cat)</code>):</p>
+<pre>animals := []Animal{Dog{}, new(Cat), Llama{}, JavaProgrammer{}}</pre>
+<p>now our program works again:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2Fx5VwyExxBM&amp;t=Y2IxMWRjNWJlNzMwNDhiYTg2NjY5ZmY0ODYwMmZkM2MwNGE3Y2QwMyxoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/x5VwyExxBM" target="_blank">http://play.golang.org/p/x5VwyExxBM</a></p>
+<p>Let&rsquo;s go in the opposite direction: let&rsquo;s pass in a <code>*Dog</code> pointer instead of a <code>Dog</code> value, but this time we <em>won&rsquo;t</em> change the definition of the <code>Dog</code> type&rsquo;s <code>Speak</code> method:</p>
+<pre>animals := []Animal{new(Dog), new(Cat), Llama{}, JavaProgrammer{}}</pre>
+<p>This also works (<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FUZ618qbPkj&amp;t=NjUzYWY3YjMyMWY1YzQ0YTg0YTgxZDlkN2RmNTM3OTAzZmJmZWFjNixoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/UZ618qbPkj" target="_blank">http://play.golang.org/p/UZ618qbPkj</a>), but recognize a subtle difference: &nbsp;we didn&rsquo;t need to change the type of the receiver of the <code>Speak</code> method. This works because a pointer type can access the methods of its associated value type, but not vice versa. That is, a <code>*Dog</code> value can utilize the <code>Speak</code> method defined on <code>Dog</code>, but as we saw earlier, a <code>Cat</code> value cannot access the <code>Speak</code> method defined on <code>*Cat</code>.</p>
+<p>That may sound cryptic, but it makes sense when you remember the following: everything in Go is passed by value. Every time you call a function, the data you&rsquo;re passing into it is copied. In the case of a method with a value receiver, the value is copied when calling the method. This is slightly more obvious when you understand that a method of the following signature:</p>
+<pre>func (t T)MyMethod(s string) {
+    // ...
+}
+</pre>
+<p>is a function of type <code>func(T, string)</code>; method receivers are passed into the function by value just like any other parameter.</p>
+<p>Any changes to the receiver made inside of a method defined on a value type (e.g., <code>func (d Dog) Speak() { ... }</code>) will not be seen by the caller because the caller is scoping a completely separate <code>Dog</code> value. Since everything is passed by value, it should be obvious why a <code>*Cat</code> method is not usable by a <code>Cat</code> value; any one <code>Cat</code> value may have any number of <code>*Cat</code> pointers that point to it. If we try to call a <code>*Cat</code> method by using a&nbsp;<code>Cat</code> value, we never had a <code>*Cat</code> pointer to begin with. Conversely, if we have a method on the <code>Dog</code> type, and we have a <code>*Dog</code> pointer, we know exactly which <code>Dog</code> value to use when calling this method, because the <code>*Dog</code> pointer points to exactly one <code>Dog</code> value; the Go runtime will dereference the pointer to its associated <code>Dog</code> value any time it is necessary. That is, given a <code>*Dog</code> value <code>d&nbsp;</code>and a method <code>Speak</code> on the <code>Dog</code> type, we can just say <code>d.Speak()</code>; we don&rsquo;t need to say something like <code>d-&gt;Speak()</code> as we might do in other languages.</p>
+<h3>The real world: getting a proper timestamp out of the Twitter API</h3>
+<p>The Twitter API represents timestamps using a string of the following format:</p>
+<pre>"Thu May 31 00:00:01 +0000 2012"</pre>
+<p>of course, timestamps can be represented in any number of ways in a JSON document, because timestamps aren&rsquo;t a part of the JSON spec. For the sake of brevity, I won&rsquo;t put in the entire JSON representation of a tweet, but let&rsquo;s take a look at how the <code>created_at</code> field would be handled by encoding/json:</p>
+<pre>package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "reflect"
+)
+
+// start with a string representation of our JSON data
+var input = `
+{
+    "created_at": "Thu May 31 00:00:01 +0000 2012"
+}
+`
+
+func main() {
+    // our target will be of type map[string]interface{}, which is a
+    // pretty generic type that will give us a hashtable whose keys
+    // are strings, and whose values are of type interface{}
+    var val map[string]interface{}
+
+    if err := json.Unmarshal([]byte(input), &amp;val); err != nil {
+        panic(err)
+    }
+
+    fmt.Println(val)
+    for k, v := range val {
+        fmt.Println(k, reflect.TypeOf(v))
+    }
+}</pre>
+<p>run it here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FVJAyqO3hTF&amp;t=NjhkODNjMDYyM2U3OGZlNDU3YWYyMDNmMWNjMjY0MzBhMDI5ODY1ZixoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/VJAyqO3hTF" target="_blank">http://play.golang.org/p/VJAyqO3hTF</a></p>
+<p>Running this application, we see that we arrive at the following output:</p>
+<pre>map[created_at:Thu May 31 00:00:01 +0000 2012]
+created_at string
+</pre>
+<p>We can see that we&rsquo;ve retrieved the key properly, but having a timestamp in a string format like that isn&rsquo;t very useful. If we want to compare timestamps to see which is earlier, or see how much time has passed since the given value and the current time, using a plain string won&rsquo;t be very helpful.</p>
+<p>Let&rsquo;s naively try to unmarshal this to a <code>time.Time</code> value, which is the standard library representation of time, and see what kind of error we get. Make the following change:</p>
+<pre>   var val map[string]time.Time
+
+    if err := json.Unmarshal([]byte(input), &amp;val); err != nil {
+        panic(err)
+    }
+</pre>
+<p>running this, we will encounter the following error:</p>
+<pre>parsing time ""Thu May 31 00:00:01 +0000 2012"" as ""2006-01-02T15:04:05Z07:00"":</pre>
+<pre>    cannot parse "Thu May 31 00:00:01 +0000 2012"" as "2006"</pre>
+<p>that somewhat confusing error message comes from the way that Go handles the conversion of <code>time.Time</code> values to and from strings. In a nutshell, what it means is that the string representation we gave it does not match the standard time formatting (because Twitter&rsquo;s API was originally written in Ruby, and the default format for Ruby is not the same as the default format for Go). We&rsquo;ll need to define our own type in order to unmarshal this value correctly. The <code>encoding/json</code> package looks to see if values passed to <code>json.Unmarshal</code> satisfy the <code>json.Unmarshaler</code> interface, which looks like this:</p>
+<pre>type Unmarshaler interface {
+    UnmarshalJSON([]byte) error
+}</pre>
+<p>this is referenced in the documentation here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fgolang.org%2Fpkg%2Fencoding%2Fjson%2F%23Unmarshaler&amp;t=ZTgzNDUzYzY5ZmZhMWJlMmEyMDA4YTBlNjRmNDY3Y2I5Yzg0NGQ3NyxoZmZyTU04Sg%3D%3D" title="http://golang.org/pkg/encoding/json/#Unmarshaler" target="_blank">http://golang.org/pkg/encoding/json/#Unmarshaler</a></p>
+<p>So what we need is a <code>time.Time</code> value with an <code>UnmarshalJSON([]byte) error</code> method:</p>
+<pre>type Timestamp time.Time
+
+func (t *Timestamp) UnmarshalJSON(b []byte) error {
+    // ...
+}</pre>
+<p>By implementing this method we satisfy the <code>json.Unmarshaler</code> interface, causing&nbsp;<code>json.Unmarshal</code> to call our custom unmarshalling code when seeing a <code>Timestamp</code> value. For this case, we use a pointer method, because we want the caller to the see the changes made to the receiver. In order to set the value that a pointer points to, we dereference the pointer manually using the * operator. Inside of the <code>UnmarshalJSON</code> method, <code>t</code> represents a pointer to a <code>Timestamp</code> value. By saying <code>*t</code>, we dereference the pointer <code>t</code> and we are able to access the value that <code>t</code> points to. Remember: everything is pass-by-value in Go. That means that inside of the <code>UnmarshalJSON</code> method, the pointer <code>t</code> is not the same pointer as the pointer in its calling context; it is a copy. If you were to assign <code>t</code> to another value directly, you would just be reassigning a function-local pointer; the change would not be seen by the caller. &nbsp;However, the pointer inside of the method call points to the same data as the pointer in its calling scope; by dereferencing the pointer, we make our change visible to the caller.</p>
+<p>We can make use of the <code>time.Parse</code> method, which has the signature <code>func(layout, value string) (Time, error)</code>. That is, it takes two strings: the first string is a layout string that describes how we are formatting our timestamps, and the second is the value we wish to parse. It returns a <code>time.Time</code> value, as well as an error (in case we failed to parse the timestamp for some reason). You can read more about the semantics of the layout strings in <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fgolang.org%2Fpkg%2Ftime%2F&amp;t=OTBiMzg1M2ExN2NmMzE2ZTYwNDVhMjVjNzBhNjYxOGU0OGQyODVmYixoZmZyTU04Sg%3D%3D" title="the time package" target="_blank">the time package documentation</a>, but in this example we won&rsquo;t need to figure out the layout string manually because this layout string already exists in the standard library as the value <code>time.RubyDate</code>. So in effect, we can resolve the string &ldquo;Thu May 31 00:00:01 +0000 2012&rdquo; to a <code>time.Time</code> value by invoking the function <code>time.Parse(time.RubyDate, "Thu May 31 00:00:01 +0000 2012")</code>. The value we will receive is of type <code>time.Time</code>. In our example, we&rsquo;re interested in values of the type <code>Timestamp</code>. We can convert the <code>time.Time</code> value to a <code>Timestamp</code> value by saying <code>Timestamp(v)</code>, where <code>v</code> is our <code>time.Time</code> value. Ultimately, our <code>UnmarshalJSON</code> function winds up looking like this:</p>
+<pre>func (t *Timestamp) UnmarshalJSON(b []byte) error {
+    v, err := time.Parse(time.RubyDate, string(b[1:len(b)-1]))
+    if err != nil {
+        return err
+    }
+    *t = Timestamp(v)
+    return nil
+}</pre>
+<p>we take a subslice of the incoming byte slice because the incoming byte slice is the raw data of the JSON element and contains the quotation marks surrounding the string value; we want to chop those off before passing the string value into <code>time.Parse</code>.</p>
+<p>Source for the entire timestamp example can be seen (and executed) here:<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fplay.golang.org%2Fp%2FQpiFsJi-nZ&amp;t=OTQ3YWViZjM3NjFlZDMwMTZlMDZhNmViNjkyZjFlMTIxYTZlNGYyNCxoZmZyTU04Sg%3D%3D" title="http://play.golang.org/p/QpiFsJi-nZ" target="_blank">http://play.golang.org/p/QpiFsJi-nZ</a></p>
+<h3>Real-world interfaces: getting an object out of an http request</h3>
+<p>Let&rsquo;s wrap up by seeing how we might design an interfaces to solve a common web development problem: we wish to parse the body of an HTTP request into some object data. At first, this is not a very obvious interface to define. We might try to say that we&rsquo;re going to get a resource from an HTTP request like this:</p>
+<pre>GetEntity(*http.Request) (interface{}, error)</pre>
+<p>because an <code>interface{}</code> can have any underlying type, so we can just parse our request and return whatever we want. This turns out to be a pretty bad strategy, the reason being that we wind up sticking too much logic into the <code>GetEntity</code> function, the <code>GetEntity</code> function now needs to be modified for every new type, and we&rsquo;ll need to use a type assertion to do anything useful with that returned <code>interface{}</code> value. In practice, functions that return <code>interface{}</code> values tend to be quite annoying, and as a rule of thumb you can just remember that it&rsquo;s typically better to take in an <code>interface{}</code> value as a parameter than it is to return an <code>interface{}</code> value. (<a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRobustness_Principle&amp;t=MWE1ZTZlMDM1MzJhMTExMDZkOTRiYWZjN2U2MWRkZDQ0NmQxMjkyNixoZmZyTU04Sg%3D%3D" title="http://en.wikipedia.org/wiki/Robustness_Principle" target="_blank">Postel&rsquo;s Law</a>, applied to interfaces)</p>
+<p>We might also be tempted to write some type-specific function like this:</p>
+<pre>GetUser(*http.Request) (User, error)</pre>
+<p>This also turns out to be pretty inflexible, because now we have different functions for every type, but no sane way to generalize them. Instead, what we really want to do is something more like this:</p>
+<pre>type Entity interface {
+    UnmarshalHTTP(*http.Request) error
+}</pre>
+<pre>func GetEntity(r *http.Request, v Entity) error {
+    return v.UnmarshalHTTP(r)
+}
+</pre>
+<p>Where the <code>GetEntity</code> function takes an interface value that is guaranteed to have an <code>UnmarshalHTTP</code> method. To make use of this, we would define on our <code>User</code> object some method that allows the <code>User</code> to describe how it would get itself out of an HTTP request:</p>
+<pre>func (u *User) UnmarshalHTTP(r *http.Request) error {
+   // ...
+}
+</pre>
+<p>in your application code, you would declare a var of <code>User</code> type, and then pass a pointer to this function into <code>GetEntity</code>:</p>
+<pre>var u User
+if err := GetEntity(req, &amp;u); err != nil {
+    // ...
+}
+</pre>
+<p>That&rsquo;s very similar to how you would unpack JSON data. &nbsp;This type of thing works consistently and safely because the statement <code>var u User</code> will automatically <a href="http://t.umblr.com/redirect?z=http%3A%2F%2Fgolang.org%2Fref%2Fspec%23The_zero_value&amp;t=N2IzMDg3ZmMwZmNmYTFjNWY1YWFlMGZkZmQ3NTA5OTIwMDY5ZGExMixoZmZyTU04Sg%3D%3D" title="http://golang.org/ref/spec#The_zero_value" target="_blank">zero</a> the <code>User</code> struct. &nbsp;Go is not like some other languages in that declaration and initialization occur separately, and that by declaring a value without initializing it you can create a subtle pitfall wherein you might access a section of junk data; when declaring the value, the runtime will zero the appropriate memory space to hold that value. &nbsp;Even if our UnmarshalHTTP method fails to utilize some fields, those fields will contain valid zero data instead of junk.</p>
+<p>That should seem weird to you if you&rsquo;re a Python programmer, because it&rsquo;s basically inside-out of what we typically do in Python. The reason that this form becomes so handy is that now we can define an arbitrary number of types, each of which is responsible for its own unpacking from an http request. It is now up to the entity definitions to decide how they may be represented. Then, we can build around the <code>Entity</code> type to create things like generic HTTP handlers.</p>
+<h3>Wrapping up</h3>
+<p>I hope, after reading this, that you feel more comfortable using interfaces in Go. Remember the following:</p>
+<ul><li>create abstractions by considering the functionality that is common between datatypes, instead of the fields that are common between datatypes</li>
+<li>an <code>interface{}</code> value is not of any type; it is of <code>interface{}</code> type</li>
+<li>interfaces are two words wide; schematically they look like <code>(type, value)</code></li>
+<li>it is better to accept an <code>interface{}</code> value than it is to return an <code>interface{}</code> value</li>
+<li>a pointer type may call the methods of its associated value type, but not vice versa</li>
+<li>everything is pass by value, even the receiver of a method</li>
+<li>an interface value isn&rsquo;t strictly a pointer or not a pointer, it&rsquo;s just an interface</li>
+<li>if you need to completely overwrite a value inside of a method, use the <code>*</code> operator to manually dereference a pointer</li>
+</ul><p>Ok, I think that sums up everything about interfaces that I personally found confusing. Happy coding :)</p>
+  	
+	
+  	
+	
+  	
+	
+  	
+	
+  	
+	
+  	
+	
+  	
+  		<p><a href="http://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go">9:07&nbsp;am&nbsp;&nbsp;&bull;&nbsp;&nbsp;1&nbsp;October&nbsp;2012&nbsp;&nbsp;&bull;&nbsp;&nbsp;88 notes</a></p>
+  	</div>
+	
+    
+  
+    <ol class="notes"><!-- START NOTES --><li class="note like tumblelog_yamidev without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://yamidev.tumblr.com/" title="WebArchitect Blog " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_3d98683a289b_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://yamidev.tumblr.com/" title="WebArchitect Blog" rel="nofollow">yamidev</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_vantischen without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://vantischen.tumblr.com/" title="Enjoy Every Moment! " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_36385cf3ed65_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://vantischen.tumblr.com/" title="Enjoy Every Moment!" rel="nofollow">vantischen</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_kenng-simply without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://kenng-simply.tumblr.com/" title="Untitled"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_closed_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://kenng-simply.tumblr.com/post/139812431219"><a rel="nofollow" href="http://kenng-simply.tumblr.com/" class="tumblelog" title="Untitled">kenng-simply</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_kenng-simply without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://kenng-simply.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://kenng-simply.tumblr.com/" title="Untitled" rel="nofollow">kenng-simply</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_darkfoxh4ck3r without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://darkfoxh4ck3r.tumblr.com/" title="My Journey with Golang " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_a6f9874c00c4_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://darkfoxh4ck3r.tumblr.com/" title="My Journey with Golang" rel="nofollow">darkfoxh4ck3r</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_aneaglenamedsmallgovernment without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://aneaglenamedsmallgovernment.tumblr.com/" title="An Eagle Named Small Government " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_489399a87b6b_16.gif" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://aneaglenamedsmallgovernment.tumblr.com/" title="An Eagle Named Small Government" rel="nofollow">aneaglenamedsmallgovernment</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_arganoilhome without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://arganoilhome.tumblr.com/" title="Argan Oil Home " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_ab724d5d916d_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://arganoilhome.tumblr.com/" title="Argan Oil Home" rel="nofollow">arganoilhome</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_michaelymg without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://michaelymg.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/cone_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://michaelymg.tumblr.com/" title="Untitled" rel="nofollow">michaelymg</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_campbellsouped without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://campbellsouped.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/cube_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://campbellsouped.tumblr.com/" title="Untitled" rel="nofollow">campbellsouped</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_floortastesfunny without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://floortastesfunny.tumblr.com/" title="nothin&#039; " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/sphere_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://floortastesfunny.tumblr.com/" title="nothin&#039;" rel="nofollow">floortastesfunny</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_larevoluciondeldia without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://larevoluciondeldia.tumblr.com/" title="The Nameless City " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_c6b81096d687_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://larevoluciondeldia.tumblr.com/" title="The Nameless City" rel="nofollow">larevoluciondeldia</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_alanzafame without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://alanzafame.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://alanzafame.tumblr.com/" title="Untitled" rel="nofollow">alanzafame</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_webhat without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://tumblr.specialbrands.net/" title="General Musing " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_7f9af537ccb1_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://tumblr.specialbrands.net/" title="General Musing" rel="nofollow">webhat</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_pipefail without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://tumblr.pipefail.com/" title="set -o pipefail " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_cf967686821c_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://tumblr.pipefail.com/" title="set -o pipefail" rel="nofollow">pipefail</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_unadulteratedhottubgalaxy without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://unadulteratedhottubgalaxy.tumblr.com/" title="Unbetitelt " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://unadulteratedhottubgalaxy.tumblr.com/" title="Unbetitelt" rel="nofollow">unadulteratedhottubgalaxy</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_footloosemoose without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://footloosemoose.tumblr.com/" title="Footloosemoose " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_51482b9a27f5_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://footloosemoose.tumblr.com/" title="Footloosemoose" rel="nofollow">footloosemoose</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_v2rred without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://v2rred.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/pyramid_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://v2rred.tumblr.com/" title="Untitled" rel="nofollow">v2rred</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_mengxilu without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://mengxilu.tumblr.com/" title="def main( ): " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_c3f73f242a4d_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://mengxilu.tumblr.com/" title="def main( ):" rel="nofollow">mengxilu</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_foecum without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://foecum.tumblr.com/" title="foecum"><img src="http://33.media.tumblr.com/avatar_83025fec799c_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://foecum.tumblr.com/post/114752776311"><a rel="nofollow" href="http://foecum.tumblr.com/" class="tumblelog" title="foecum">foecum</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note reblog tumblelog_oxfordtoma with_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://oxfordtoma.tumblr.com/" title="Oxford Toma"><img src="http://38.media.tumblr.com/avatar_f61ba6b9c490_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://oxfordtoma.tumblr.com/post/114310359801"><a rel="nofollow" href="http://oxfordtoma.tumblr.com/" class="tumblelog" title="Oxford Toma">oxfordtoma</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a> and added:</span><div class="clear"></div><blockquote><a rel="nofollow" href="http://oxfordtoma.tumblr.com/post/114310359801" title="View post">Super</a></blockquote></li><li class="note like tumblelog_moogentian without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://moogentian.tumblr.com/" title="galeo&#039;s blog " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_2a08abc97e03_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://moogentian.tumblr.com/" title="galeo&#039;s blog" rel="nofollow">moogentian</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_schmooser without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://schmooser.tumblr.com/" title="Don&#039;t hesitate " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_ea694feadaa9_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://schmooser.tumblr.com/" title="Don&#039;t hesitate" rel="nofollow">schmooser</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_p-hazel without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://p-hazel.tumblr.com/" title="I&#039;m not ready yet"><img src="http://31.media.tumblr.com/avatar_0854a09ab185_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://p-hazel.tumblr.com/post/113306992175"><a rel="nofollow" href="http://p-hazel.tumblr.com/" class="tumblelog" title="I&#039;m not ready yet">p-hazel</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_p-hazel without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://p-hazel.tumblr.com/" title="I&#039;m not ready yet " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_0854a09ab185_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://p-hazel.tumblr.com/" title="I&#039;m not ready yet" rel="nofollow">p-hazel</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_letusfly85 without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://letusfly85.tumblr.com/" title="Reminder"><img src="http://33.media.tumblr.com/avatar_7619e0c18cc6_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://letusfly85.tumblr.com/post/113110010700"><a rel="nofollow" href="http://letusfly85.tumblr.com/" class="tumblelog" title="Reminder">letusfly85</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_deftbeta without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://deftbeta.tumblr.com/" title="Where is my grind? " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_f4a2860a9146_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://deftbeta.tumblr.com/" title="Where is my grind?" rel="nofollow">deftbeta</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_jiajizhou without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://jiajizhou.tumblr.com/" title="Coder&#039;s Log " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://jiajizhou.tumblr.com/" title="Coder&#039;s Log" rel="nofollow">jiajizhou</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_soroushjp without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://soroushjp.tumblr.com/" title="Untitled"><img src="http://assets.tumblr.com/images/default_avatar_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://soroushjp.tumblr.com/post/107575166704"><a rel="nofollow" href="http://soroushjp.tumblr.com/" class="tumblelog" title="Untitled">soroushjp</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_soroushjp without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://soroushjp.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://soroushjp.tumblr.com/" title="Untitled" rel="nofollow">soroushjp</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_thelunaticisinmyhead without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://thelunaticisinmyhead.tumblr.com/" title="The Lunatic Is In My Head " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_ab05fb1f79c4_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://thelunaticisinmyhead.tumblr.com/" title="The Lunatic Is In My Head" rel="nofollow">thelunaticisinmyhead</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_zendes without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://zendes.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/cone_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://zendes.tumblr.com/" title="Untitled" rel="nofollow">zendes</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_fyelles without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://fyelles.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/cone_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://fyelles.tumblr.com/" title="Untitled" rel="nofollow">fyelles</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_fyelles without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://fyelles.tumblr.com/" title="Untitled"><img src="http://assets.tumblr.com/images/default_avatar/cone_open_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://fyelles.tumblr.com/post/106357464026"><a rel="nofollow" href="http://fyelles.tumblr.com/" class="tumblelog" title="Untitled">fyelles</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_rebyn without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://rebyn.tumblr.com/" title="stuff that matters " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_59df6dcf820d_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://rebyn.tumblr.com/" title="stuff that matters" rel="nofollow">rebyn</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_guyvdb21 without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://guyvdb21.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/octahedron_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://guyvdb21.tumblr.com/" title="Untitled" rel="nofollow">guyvdb21</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_tonydaly without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://tonydaly.tumblr.com/" title="Moot Pointer " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_56e2ef54a9bf_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://tonydaly.tumblr.com/" title="Moot Pointer" rel="nofollow">tonydaly</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_lexicalunit with_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://lexicalunit.tumblr.com/" title="Lexical Unit"><img src="http://33.media.tumblr.com/avatar_fd2834c2792c_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://lexicalunit.tumblr.com/post/104435374835"><a rel="nofollow" href="http://lexicalunit.tumblr.com/" class="tumblelog" title="Lexical Unit">lexicalunit</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a> and added:</span><div class="clear"></div><blockquote><a rel="nofollow" href="http://lexicalunit.tumblr.com/post/104435374835" title="View post">Neat.</a></blockquote></li><li class="note like tumblelog_lexicalunit without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://lexicalunit.tumblr.com/" title="Lexical Unit " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_fd2834c2792c_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://lexicalunit.tumblr.com/" title="Lexical Unit" rel="nofollow">lexicalunit</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_omg without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://omg.tumblr.com/" title="OMG " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://omg.tumblr.com/" title="OMG" rel="nofollow">omg</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_macarenomarco without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://macarenomarco.tumblr.com/" title="Random Ramblings " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_b358877ca534_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://macarenomarco.tumblr.com/" title="Random Ramblings" rel="nofollow">macarenomarco</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_theworldismyprojection without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://theworldismyprojection.tumblr.com/" title="The world is my projection " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_9879fcea7e80_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://theworldismyprojection.tumblr.com/" title="The world is my projection" rel="nofollow">theworldismyprojection</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_uokada without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://uokada.tumblr.com/" title="pythonista lifelog"><img src="http://assets.tumblr.com/images/default_avatar_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://uokada.tumblr.com/post/99115743159"><a rel="nofollow" href="http://uokada.tumblr.com/" class="tumblelog" title="pythonista lifelog">uokada</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_watnotevenmad without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://watnotevenmad.tumblr.com/" title="Ballad of an INTJ " rel="nofollow"><img src="http://38.media.tumblr.com/avatar_040545337a01_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://watnotevenmad.tumblr.com/" title="Ballad of an INTJ" rel="nofollow">watnotevenmad</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_slavamnemonic without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://slavamnemonic.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/pyramid_closed_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://slavamnemonic.tumblr.com/" title="Untitled" rel="nofollow">slavamnemonic</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_alirezaahmadi without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://alirezaahmadi.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/cube_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://alirezaahmadi.tumblr.com/" title="Untitled" rel="nofollow">alirezaahmadi</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_b1rkh0ff without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://b1rkh0ff.tumblr.com/" title="Coding with style"><img src="http://assets.tumblr.com/images/default_avatar/sphere_open_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://b1rkh0ff.tumblr.com/post/97090327629"><a rel="nofollow" href="http://b1rkh0ff.tumblr.com/" class="tumblelog" title="Coding with style">b1rkh0ff</a> reblogged this from <a rel="nofollow" href="http://jordanorelli.com/" class="source_tumblelog" title="jordan orelli">jordanorelli</a></span><div class="clear"></div></li><li class="note like tumblelog_b1rkh0ff without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://b1rkh0ff.tumblr.com/" title="Coding with style " rel="nofollow"><img src="http://assets.tumblr.com/images/default_avatar/sphere_open_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://b1rkh0ff.tumblr.com/" title="Coding with style" rel="nofollow">b1rkh0ff</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_stillfeelingclever without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://stillfeelingclever.com/" title="still feeling clever " rel="nofollow"><img src="http://33.media.tumblr.com/avatar_e5e1fad85081_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://stillfeelingclever.com/" title="still feeling clever" rel="nofollow">stillfeelingclever</a> liked this</span><div class="clear"></div></li><li class="note like tumblelog_se77en without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://se77en.tumblr.com/" title="Untitled " rel="nofollow"><img src="http://31.media.tumblr.com/avatar_08585c3db312_16.png" class="avatar " alt="" /></a><span class="action"><a rel="nofollow" href="http://se77en.tumblr.com/" title="Untitled" rel="nofollow">se77en</a> liked this</span><div class="clear"></div></li><li class="note reblog tumblelog_jordanorelli original_post without_commentary"><a rel="nofollow" class="avatar_frame" target="_blank" href="http://jordanorelli.com/" title="jordan orelli"><img src="http://31.media.tumblr.com/avatar_1dbefd5af732_16.png" class="avatar " alt="" /></a><span class="action" data-post-url="http://jordanorelli.com/post/32665860244"><a rel="nofollow" href="http://jordanorelli.com/" class="tumblelog" title="jordan orelli">jordanorelli</a> posted this</span><div class="clear"></div></li><li class="note more_notes_link_container" style="text-align:center;" id="more_notes_32665860244"><a class="more_notes_link" rel="nofollow" href="#" onclick="this.style.display='none';document.getElementById('notes_loading_32665860244').style.display = 'block';if(window.ActiveXObject)var tumblrReq=new ActiveXObject('Microsoft.XMLHTTP');else if(window.XMLHttpRequest)var tumblrReq=new XMLHttpRequest();else return false;tumblrReq.onreadystatechange=function(){if(tumblrReq.readyState==4){var notes_html=tumblrReq.responseText.split('<!-- START '+'NOTES -->')[1].split('<!-- END '+'NOTES -->')[0];
+if(window.tumblrNotesLoaded)if(tumblrNotesLoaded(notes_html)==false)return;var more_notes_link=document.getElementById('more_notes_32665860244');var notes=more_notes_link.parentNode;notes.removeChild(more_notes_link);notes.innerHTML+=notes_html;if(window.tumblrNotesInserted)tumblrNotesInserted(notes_html);}};tumblrReq.open('GET','/notes/32665860244/7hv4PbHmN?from_c=1349096827',true);tumblrReq.send();return false;">Show more notes</a><span class="notes_loading" id="notes_loading_32665860244" style="display:none;">Loading...</span></li><!-- END NOTES --></ol>
+
+  	
+  	<div id="footer">
+  		
+  		
+  			
+  			<a href="http://jordanorelli.com/post/42369331748">Back</a>
+  			
+  			&nbsp; &bull; &nbsp;
+  			 
+  			<a href="http://jordanorelli.com/post/31533769172">Next</a>
+  			
+  		
+  		<div class="credit">
+  			<a href="http://justplaintheme.tumblr.com">Just Plain Theme</a> by <a href="http://petervidani.com">Peter Vidani</a><br />
+  			Powered by <a href="http://www.tumblr.com/">Tumblr</a>
+  		</div>
+  	</div>
+  </div>
+<div class="clear"></div>
+</div>
+
+
+    <script type="text/javascript">
+  var _sf_async_config = { uid: 41347, domain: 'jordanorelli.tumblr.com' };
+  (function() {
+    function loadChartbeat() {
+      window._sf_endpt = (new Date()).getTime();
+      var e = document.createElement('script');
+      e.setAttribute('language', 'javascript');
+      e.setAttribute('type', 'text/javascript');
+      e.setAttribute('src',
+        (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+        "js/chartbeat.js");
+      document.body.appendChild(e);
+    };
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+      loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+</script>
+<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'No';
+        var addthis_enabled = false;
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    postATMessage();
+                    postRapidMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    postATMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://secure.assets.tumblr.com/analytics.html?3fc3652c0f8f5058bb8bcd113bf32e17#" +
+                              "http://jordanorelli.com";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/post/32665860244/how-to-use-interfaces-in-go?route=%2Fpost%2F%3Aid%2F%3Asummary'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+        function postATMessage() {
+            if (addthis_enabled && analytics_iframe_loaded) {
+                analytics_frame.contentWindow.postMessage('enable_addthis', analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postRapidMessage() {
+                            if (analytics_iframe_loaded) {
+                    var is_ajax = '';
+                    var route = '/post/:id/:summary';
+                    var tumblelog_id = '14451417';
+                    var yahoo_space_id = '1197719230';
+                    var rapid_client_only = '1';
+                    var apv = '1';
+                    var rapid_ex = '';
+
+                    analytics_frame.contentWindow.postMessage(
+                        [
+                            'tick_rapid', is_ajax, route, user_logged_in, tumblelog_id,
+                            yahoo_space_id, rapid_client_only, apv, rapid_ex
+                        ].join(';'),
+                        analytics_frame.src.split('/analytics.html')[0]
+                    );
+                }
+                    }
+    })();
+</script><script type="text/javascript">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1459275161&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvam9yZGFub3JlbGxpLmNvbVwvcG9zdFwvMzI2NjU4NjAyNDRcL2hvdy10by11c2UtaW50ZXJmYWNlcy1pbi1nbyIsInJlcXR5cGUiOjAsInJvdXRlIjoiXC9wb3N0XC86aWRcLzpzdW1tYXJ5In0=&U=KCLDIBAJCA&K=8bda5f6f1f5d628a4648f2968cacc32b9ef414982378a6d4cc67bb8e2874e7aa&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1459275161&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvam9yZGFub3JlbGxpLmNvbVwvcG9zdFwvMzI2NjU4NjAyNDRcL2hvdy10by11c2UtaW50ZXJmYWNlcy1pbi1nbyIsInJlcXR5cGUiOjAsInJvdXRlIjoiXC9wb3N0XC86aWRcLzpzdW1tYXJ5Iiwibm9zY3JpcHQiOjF9&U=KCLDIBAJCA&K=a102038df6b377649a7dd4688f16213a69c255006784cbd39e2e725b5f1f4cbe&R="></noscript><script >
+        (function (w,d) {
+            'use strict';
+            var l = function(el, type, listener, useCapture) {
+                el.addEventListener ?
+                el.addEventListener(type, listener, !!useCapture) :
+                el.attachEvent && el.attachEvent('on' + type, listener, !!useCapture);
+            };
+            var a = function () {
+                                if (d.getElementById('tumblr-cdx')) {
+                    return;
+                }
+                var s = d.createElement('script');
+                var el = d.getElementsByTagName('script')[0];
+                s.async = true;
+                s.src = 'http://assets.tumblr.com/assets/scripts/vendor/cedexis/cedexis.radar.js?_v=7450eec657e34e1e41dac4e1af96a170';
+                s.type = 'text/javascript';
+                s.id = 'tumblr-cdx';
+                d.body.appendChild(s);
+            };
+            l(w,'load',a);
+        }(window, document));
+</script><script type="text/javascript">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1459275161&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6XC9cL2pvcmRhbm9yZWxsaS5jb21cL3Bvc3RcLzMyNjY1ODYwMjQ0XC9ob3ctdG8tdXNlLWludGVyZmFjZXMtaW4tZ28iLCJyZXF0eXBlIjowLCJyb3V0ZSI6IlwvcG9zdFwvOmlkXC86c3VtbWFyeSIsInBvc3RzIjpbeyJwb3N0aWQiOiIzMjY2NTg2MDI0NCIsImJsb2dpZCI6IjE0NDUxNDE3Iiwic291cmNlIjozM31dfQ==&U=EGMCOPPLBM&K=788842f38506f39f6ac44a76dd24232a54a572fa0adc6b64398c49af6dbb844c&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1459275161&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6XC9cL2pvcmRhbm9yZWxsaS5jb21cL3Bvc3RcLzMyNjY1ODYwMjQ0XC9ob3ctdG8tdXNlLWludGVyZmFjZXMtaW4tZ28iLCJyZXF0eXBlIjowLCJyb3V0ZSI6IlwvcG9zdFwvOmlkXC86c3VtbWFyeSIsInBvc3RzIjpbeyJwb3N0aWQiOiIzMjY2NTg2MDI0NCIsImJsb2dpZCI6IjE0NDUxNDE3Iiwic291cmNlIjozM31dLCJub3NjcmlwdCI6MX0=&U=EGMCOPPLBM&K=f7a8c1a95a6bc447cb12f30f4097e09c9ded63857ec4f930fc95a7dac2423339&R="></noscript>
+<noscript id="bootloader" data-bootstrap="{&quot;Components&quot;:{&quot;PostActivity&quot;:[],&quot;TumblelogIframe&quot;:{&quot;tumblelogBundleSrc&quot;:&quot;http:\/\/assets.tumblr.com\/client\/prod\/standalone\/tumblelog\/index.build.js?_v=552acf8ad781e97bb52ad6ed2c2bd799&quot;,&quot;tumblelogName&quot;:&quot;jordanorelli&quot;,&quot;isLoggedIn&quot;:false,&quot;isFriend&quot;:false,&quot;formKey&quot;:&quot;&quot;,&quot;tumblelogTitle&quot;:&quot;jordan orelli&quot;,&quot;tumblelogAvatar&quot;:&quot;http:\/\/38.media.tumblr.com\/avatar_1dbefd5af732_40.png&quot;,&quot;tumblelogHost&quot;:&quot;http:\/\/jordanorelli.com&quot;,&quot;brag&quot;:true,&quot;currentPageType&quot;:&quot;single_post&quot;,&quot;currentPage&quot;:&quot;1&quot;,&quot;tag&quot;:&quot;&quot;,&quot;query&quot;:&quot;&quot;,&quot;chrono&quot;:false,&quot;postId&quot;:&quot;32665860244&quot;,&quot;src&quot;:&quot;http:\/\/jordanorelli.com\/post\/32665860244\/how-to-use-interfaces-in-go&quot;,&quot;postUrl&quot;:&quot;&quot;,&quot;isBlocked&quot;:null,&quot;isAdmin&quot;:false,&quot;lookupButtonUrl&quot;:&quot;&quot;,&quot;showSpamButton&quot;:false,&quot;showRootPostButton&quot;:false,&quot;rootPostUrl&quot;:&quot;&quot;,&quot;showRadarPostButton&quot;:false,&quot;radarKeys&quot;:&quot;&quot;,&quot;isUniblocked&quot;:false,&quot;isNsfw&quot;:false,&quot;isAdult&quot;:false,&quot;isSpam&quot;:false,&quot;isPrimaryBlog&quot;:false,&quot;canEdit&quot;:false,&quot;canReblogSelf&quot;:false,&quot;showLikeButton&quot;:false,&quot;showReblogButton&quot;:false,&quot;reblogUrl&quot;:&quot;&quot;,&quot;showFanMailButton&quot;:false,&quot;showMessagingButton&quot;:false,&quot;loginCheckIframeSrc&quot;:&quot;http:\/\/assets.tumblr.com\/assets\/html\/iframe\/login_check.html?_v=282357db21d8a5883cc1c780ace4cb5f&quot;,&quot;appInstallUrl&quot;:&quot;https:\/\/go.onelink.me\/893408789?pid=tumblr_blog_network\u0026c=tumblr_blog_network\u0026af_sub3=blog_name&quot;}},&quot;Flags&quot;:{&quot;doods&quot;:&quot;eyJmaWx0ZXJfbnNmdyI6dHJ1ZSwia2V5Y29tbWFuZF9hdXRvX3BhZ2luYXRlIjp0cnVlLCJsb2dnZWRfb3V0X3NlYXJjaCI6dHJ1ZSwiYXJjaGl2ZS1wbHVzIjp0cnVlLCJzZWN1cmVfZm9ybV9rZXkiOnRydWUsInNlY3VyZV9mb3JtX2tleV9mdWxseV9vbiI6dHJ1ZSwidHVtYmxlbG9nX3BvcG92ZXIiOnRydWUsImNhbm9uaWNhbF91cmxfd3JpdGVzIjp0cnVlLCJlbmFibGVfY2FwdHVyZV9qcyI6dHJ1ZSwicHJpbWFfcG9zdF9mb3JtcyI6dHJ1ZSwibG9ja2VkX3JlYmxvZ191aSI6dHJ1ZSwibG9ja2VkX3JlYmxvZ191aV9wYXJzZV90ZXN0Ijp0cnVlLCJ0YWJsZXRfYmFubmVyX2FjdGl2ZSI6dHJ1ZSwibW9iaWxlX2Jhbm5lcl9hY3RpdmUiOnRydWUsImxvZ19zZWFyY2hfYm94Ijp0cnVlLCJ1c2VyX21lbnRpb25zIjp0cnVlLCJodG1sNV9hdWRpb19wbGF5ZXIiOnRydWUsInBvcG92ZXJfcmVjb21tZW5kYXRpb25zIjp0cnVlLCJpbmRhc2hfcmVjb21tZW5kYXRpb25zIjp0cnVlLCJwb3B0aWNhX3R1bWJsZWxvZ19wb3BvdmVycyI6dHJ1ZSwidHVtYmxyX3R2Ijp0cnVlLCJkZXByZWNhdGVfZmVhdHVyZWRfdGFncyI6dHJ1ZSwicmVibG9nX3VpX3JlZnJlc2giOnRydWUsInRhYl9zd2l0Y2hlciI6dHJ1ZSwiZmFzdF9jb21wb3NlIjp0cnVlLCJkYXNoYm9hcmRfcmVmcmVzaCI6dHJ1ZSwibW9iaWxlX3dlYl9waG90b3NldHMiOnRydWUsIm1vYmlsZV93ZWJfZ2F0ZSI6dHJ1ZSwibW9iaWxlX3dlYl9wYWdlX3RpdGxlcyI6dHJ1ZSwibW9iaWxlX3dlYl9zZWFyY2giOnRydWUsIm1vYmlsZV93ZWJfc2VhcmNoX2ZpbHRlciI6dHJ1ZSwibW9iaWxlX3dlYl9hYnVzZV9mb3JtIjp0cnVlLCJkb250X2Nhc3RfanNfZm9sbG93cyI6dHJ1ZSwiYWRzX25ld192ZW5kb3JfYnV0dG9ucyI6dHJ1ZSwiYmxvY2tfZmVhdHVyZSI6dHJ1ZSwicmVhY3RpdmF0aW9uX2Zsb3ciOnRydWUsImd1bHBqc19hZG1pbiI6dHJ1ZSwiZW5hYmxlX2pzX2VwaGVtZXJhbF9sb2ciOnRydWUsImxvZ19sYWR5Ijp0cnVlLCJjc2xvZ2dlcl9qcyI6dHJ1ZSwiZGlzY292ZXJ5X2h1Yl9hY2Nlc3MiOnRydWUsImhlYWRlcl9hY2NvdW50X21lbnUiOnRydWUsImVuYWJsZV9wcmltYV9zaGFyZV9wb3BvdmVyIjp0cnVlLCJlbmFibGVfc2hhcmVfZW1iZWRfY29kZSI6dHJ1ZSwicGludGVyZXN0X3NoYXJpbmciOnRydWUsInJlZGRpdF9zaGFyaW5nIjp0cnVlLCJwb3N0X2l0X2ZvcndhcmQiOnRydWUsInBlZXByX3NlYXJjaF9hbmRfZmlsdGVyIjp0cnVlLCJpbnRlcm5zX3BhZ2UiOnRydWUsImZvbGxvd2VkX3NlYXJjaGVzX2JpZ193ZWIiOnRydWUsImRpc2FibGVfcHVibGljX3JlcGxpZXMiOnRydWUsIndlYl9ibG9nX3N1YnNjcmlwdGlvbnMiOnRydWUsIm5vdGVzX3JlZGVzaWduX3BoYXNlXzAxIjp0cnVlLCJuZXdfcmVwbGllcyI6dHJ1ZSwiZGlzYWJsZV95YWhvb19iX2Nvb2tpZSI6dHJ1ZSwicHJpbWFfdHVtYmxlbG9nX2J1bmRsZSI6dHJ1ZX0=&quot;},&quot;Context&quot;:{&quot;name&quot;:&quot;default&quot;,&quot;time&quot;:1459275161000,&quot;userinfo&quot;:{&quot;primary&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;,&quot;channels&quot;:[]},&quot;hosts&quot;:{&quot;assets_host&quot;:&quot;http:\/\/assets.tumblr.com&quot;,&quot;secure_assets_host&quot;:&quot;https:\/\/secure.assets.tumblr.com&quot;,&quot;www_host&quot;:&quot;http:\/\/www.tumblr.com&quot;,&quot;secure_www_host&quot;:&quot;https:\/\/www.tumblr.com&quot;,&quot;embed_host&quot;:&quot;https:\/\/embed.tumblr.com&quot;,&quot;safe_host&quot;:&quot;http:\/\/safe.txmblr.com&quot;,&quot;platform_host&quot;:&quot;http:\/\/platform.tumblr.com&quot;},&quot;language&quot;:&quot;en_US&quot;,&quot;language_simple&quot;:&quot;en&quot;},&quot;Translations&quot;:[]}"></noscript>
+<script src="http://assets.tumblr.com/client/prod/standalone/tumblelog/index.build.js?_v=552acf8ad781e97bb52ad6ed2c2bd799"></script>
+
+</body>
+</html>
