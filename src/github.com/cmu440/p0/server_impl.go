@@ -28,10 +28,12 @@ func init() {
 
 type multiEchoServer struct {
 	// TODO: implement this!
-	isStarted   bool      //Signifies whether the server is started or not
-	isClosed    bool      // Signifies whether the server is closed or not
-	serverExit  bool      //Broadcast to all service channels to exit
-	numConnChan chan int  // Used to count the number of active servers
+	isStarted   bool     //Signifies whether the server is started or not
+	isClosed    bool     // Signifies whether the server is closed or not
+	serverExit  bool     //Broadcast to all service channels to exit
+	numConnChan chan int // Used to count the number of active servers
+	count       int
+	countLock   *sync.Mutex
 	exitChannel chan bool // Used to end the dispatcher
 	listenConn  net.Listener
 	wg          sync.WaitGroup      // A global waiter
@@ -45,8 +47,10 @@ func New() MultiEchoServer {
 		isStarted:   false,
 		isClosed:    false,
 		serverExit:  false,
+		count:       0,
+		countLock:   &sync.Mutex{},
 		numConnChan: make(chan int, 1),
-		exitChannel: make(chan bool),
+		exitChannel: make(chan bool, 1),
 		serverChans: make(map[int]chan string),
 	}
 }
@@ -95,6 +99,9 @@ func (mes *multiEchoServer) dispatch() {
 			fuck("cyan", "Waiting for connection...")
 			conn, err := mes.listenConn.Accept()
 			fuck("cyan", "Got an connection")
+			mes.countLock.Lock()
+			mes.count++
+			mes.countLock.Unlock()
 			if err != nil {
 				fmt.Println("\tError on accept connection: %v",
 					err)
@@ -177,14 +184,15 @@ func readFromClient(conn net.Conn, serverRead chan string,
 }
 
 func (mes *multiEchoServer) deCount() {
-	count := <-mes.numConnChan
-	count--
-	mes.numConnChan <- count
+	mes.countLock.Lock()
+	mes.count++
+	mes.countLock.Unlock()
 }
 
 func (mes *multiEchoServer) Close() {
 	// TODO: implement this!
 	if mes.isStarted {
+		fuck("cyan", "Server is closing")
 		mes.exitChannel <- true
 		mes.wg.Wait()
 
@@ -192,8 +200,6 @@ func (mes *multiEchoServer) Close() {
 		// server's close and start operations.
 		mes.isStarted = false
 		mes.isClosed = true
-		close(mes.exitChannel)
-		close(mes.numConnChan)
 		fmt.Println("\tNow the server is down.")
 	} else if mes.isClosed {
 		fmt.Println("\tThe server has been closed.")
